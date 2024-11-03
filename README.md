@@ -42,8 +42,13 @@ in nginx/default.conf file : in line root /var/www/html/my_project_directory/pub
 outside container (ex in new terminal, at symfony_docker root)
 docker-compose down --remove-orphans && docker-compose up -d
 
-## 3- access your app
+## 8- access your app
 http://localhost:8080/
+
+## 9 enter app container as www-data user and access your project to use bin commands 
+docker exec -it --user=www-data symfony_app bash 
+cd my_project_directory
+ex : bin/console make:controller to create new controller
 
 
 
