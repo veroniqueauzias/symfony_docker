@@ -40,7 +40,7 @@ http://localhost:8080/
 ## 9 enter app container as www-data user and access your project to use bin commands 
 docker exec -it --user=www-data symfony_app bash 
 cd my_project_directory
-ex : bin/console make:controller to create new controller
+ex : php bin/console make:controller to create new controller
 
 
 
