@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: symfony_app
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - db
+
+  # web:
+  #   image: nginx:alpine
+  #   container_name: symfony_web
+  #   ports:
+  #     - "8080:80"
+  #   volumes:
+  #     - .:/var/www/html
+  #     - ./nginx/default.conf:/etc/nginx/conf.d/default.conf  # Monté ici
+  #   depends_on:
+  #     - app
+
+  db:
+    image: mysql:5.7
+    container_name: symfony_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: symfony_phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: user
+      PMA_PASSWORD: password
+    depends_on:
+      - db
+
+volumes:
+  db_data:
