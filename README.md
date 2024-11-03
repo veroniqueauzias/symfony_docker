@@ -27,16 +27,8 @@ composer install
 
 ## 6- enable nginx
 uncomment nginx part in docker-compose.yml
-  web:
-     image: nginx:alpine
-     container_name: symfony_web
-     ports:
-       - "8080:80"
-     volumes:
-       - .:/var/www/html
-       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf   Monté ici
-     depends_on:
-       - app
+(service:web)
+
 in nginx/default.conf file : in line root /var/www/html/my_project_directory/public - change 'my_project_directory' to your project name
 ## 7- relaunch docker
 outside container (ex in new terminal, at symfony_docker root)
