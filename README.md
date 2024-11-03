@@ -5,7 +5,7 @@ install any symfony with docker
 https://github.com/veroniqueauzias/symfony_docker.git
 
 ## 2- personalize docker-compose
-you can personnalise the docker-compose.yml file and change container names
+you can personnalize the docker-compose.yml file and change container names
 
 ## 3- run docker to access composer
 docker-compose up -d
